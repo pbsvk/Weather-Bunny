@@ -9,6 +9,7 @@ import SwiftUI
 import CoreLocationUI
 
 struct WelcomeView: View {
+    @EnvironmentObject var locationManager: LocationManager
     var body: some View {
         ZStack {
             Color.pink.opacity(0.6) // Light pink background
@@ -36,7 +37,7 @@ struct WelcomeView: View {
                                    .shadow(color: Color.pink.opacity(0.3), radius: 20, x: 0, y: 0)
                 
                 LocationButton(.shareCurrentLocation) {
-                    print("Tapped")
+                    locationManager.requestLocarion()
                 }
                 .cornerRadius(30)
                 .symbolVariant(.fill)
