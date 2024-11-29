@@ -16,7 +16,7 @@ struct WeatherView: View {
     var body: some View {
         // Example: Determine if it's daytime based on sunrise and sunset
         let isDaytime = determineDaytime(currentTime: weather.dt, sunrise: weather.sys.sunrise, sunset: weather.sys.sunset)
-        let condition = WeatherCondition(temperature: weather.main.feelsLike, isDaytime: isDaytime)
+        let condition = WeatherCondition(temperature: weather.main.temp, isDaytime: isDaytime)
 
         GeometryReader { geometry in
             ZStack {
@@ -30,17 +30,34 @@ struct WeatherView: View {
                         // Display city name
                         HStack (spacing: 8){
                             Image(systemName: "paperplane.fill")
-                            Text(weather.name)
-                                .font(.system(size: geometry.size.width * 0.07))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
+                            
+                            if isDaytime == false {
+                                Text(weather.name)
+                                    .font(.system(size: geometry.size.width * 0.07))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }
+                            
+                            else {
+                                Text(weather.name)
+                                    .font(.system(size: geometry.size.width * 0.07))
+                                    .fontWeight(.bold)
+                            }
                         }
 
                         // Use condition for icon
-                        Image(systemName: condition.iconName())
-                            .resizable()
-                            .frame(width: geometry.size.width * 0.15, height: geometry.size.width * 0.15)
-                            .foregroundColor(.yellow)
+                        if isDaytime == true {
+                            Image(systemName: WeatherIcons.fromWeatherResponse(weather: weather.weather).iconName())
+                                .resizable()
+                                .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.15)
+                                
+                        }
+                        else {
+                            Image(systemName: WeatherIcons.fromWeatherResponse(weather: weather.weather).iconName())
+                                .resizable()
+                                .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.15)
+                                .foregroundStyle(.black)
+                        }
                        
                         Text(weather.weather.first?.main ?? "N/A")
                             .font(.system(size: geometry.size.width * 0.05))
@@ -150,20 +167,48 @@ struct WeatherView: View {
                                 .foregroundColor(.black)
 
                             HStack {
-                                WeatherRow(logo: "thermometer", name: "Min-Temp", value: "\(weather.main.tempMin.roundDouble())°")
+                                Image(systemName: "thermometer")
+                                    .foregroundStyle(.blue)
+                                    .frame(width: 20, height: 20)
+                                    .padding()
+                                    .background(Color(.black))
+                                    .cornerRadius(50)
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("Min-Temp")
+                                        .font(.caption)
+                                    
+                                    Text("\(weather.main.tempMin.roundDouble())°")
+                                        .bold()
+                                        .font(.title3)
+                                }
                                 
                                 Spacer()
-                                WeatherRow(logo: "thermometer", name: "Max-Temp", value: "\(weather.main.tempMax.roundDouble())°")
+                                Image(systemName: "thermometer")
+                                    .foregroundStyle(.red)
+                                    .frame(width: 20, height: 20)
+                                    .padding()
+                                    .background(Color(.black))
+                                    .cornerRadius(50)
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text("Max-Temp")
+                                        .font(.caption)
+                                    
+                                    Text("\(weather.main.tempMax.roundDouble())°")
+                                        .bold()
+                                        .font(.title3)
+                                }
+                                
                             }
 
                             HStack {
-                                WeatherRow(logo: "barometer", name: "Pressure", value: "\(weather.main.pressure) hPa")
+                                WeatherRow(logo: "cloud", name: "Cloudiness", value: "\(weather.clouds.all)%")
+                               
                                 Spacer()
                                 WeatherRow(logo: "humidity", name: "Humidity", value: "\(weather.main.humidity.roundDouble())%")
                             }
 
                             HStack {
-                                WeatherRow(logo: "cloud", name: "Cloudiness", value: "\(weather.clouds.all)%")
+                                WeatherRow(logo: "barometer", name: "Pressure", value: "\(weather.main.pressure) hPa")
                                 Spacer()
                             }
                             WeatherRow(logo: "newspaper", name: "Weather Description", value: weather.weather.first?.description.capitalized ?? "N/A")

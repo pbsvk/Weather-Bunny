@@ -51,27 +51,6 @@ enum WeatherCondition {
         }
          }
 
-    func iconName() -> String {
-        switch self {
-        case .freezingNight, .freezingDay:
-            return "snow.fill"
-        case .veryColdNight, .veryColdDay:
-            return "cloud.snow.fill"
-        case .coldNight, .coldDay:
-            return "cloud.drizzle.fill"
-        case .coolNight, .coolDay:
-            return "cloud.fill"
-        case .mildNight, .mildDay:
-            return "cloud.sun"
-        case .warmNight, .warmDay:
-            return "sun.max.fill"
-        case .hotNight, .hotDay:
-            return "sun.dust"
-        case .veryHotNight, .veryHotDay:
-            return "sun.haze"
-        }
-    }
-
     func backgroundImageName() -> String {
         switch self {
         case .freezingNight:
@@ -114,7 +93,7 @@ enum WeatherCondition {
         case .freezingNight, .freezingDay:
             return [.black, .white] // Adjusted colors
         case .veryColdNight, .veryColdDay:
-            return [.gray, .white]
+            return [.gray, .blue.opacity(0.5)]
         case .coldNight, .coldDay:
             return [.teal, .white]
         case .coolNight, .coolDay:
@@ -131,4 +110,40 @@ enum WeatherCondition {
     }
 }
 
-// Ensure that any logic determining day or night is integrated and functioning properly as intended.
+// New enum to map weather conditions to icons
+enum WeatherIcons {
+    case snow, cloudSnowFill, cloudDrizzleFill, cloudFill, cloudSun, sunMaxFill, sunDust, sunHaze
+
+    static func fromWeatherResponse(weather: [ResponseBody.WeatherResponse]) -> WeatherIcons {
+        guard let mainWeather = weather.first?.main else { return .cloudFill }
+        switch mainWeather {
+        case "Snow":
+            return .snow
+        case "Clouds":
+            return .cloudFill
+        default:
+            return .cloudSun
+        }
+    }
+
+    func iconName() -> String {
+        switch self {
+        case .snow:
+            return "snow"
+        case .cloudSnowFill:
+            return "cloud.snow.fill"
+        case .cloudDrizzleFill:
+            return "cloud.drizzle.fill"
+        case .cloudFill:
+            return "cloud.fill"
+        case .cloudSun:
+            return "cloud.sun"
+        case .sunMaxFill:
+            return "sun.max.fill"
+        case .sunDust:
+            return "sun.dust"
+        case .sunHaze:
+            return "sun.haze"
+        }
+    }
+}
