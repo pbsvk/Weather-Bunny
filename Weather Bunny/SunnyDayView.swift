@@ -57,17 +57,17 @@ struct SunnyDayView: View {
                         .foregroundColor(.white)
                     
                     ZStack {
-                                        Image("E4E23AFC-12E3-45FA-80CB-53EE50B58844 2")
+                                        Image("CE657A9A-DBF3-44DD-B785-61BD3CA342C4 2")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 300, height: 400)
                                             .clipShape(Circle()) // Optional: Make it a circle
                                             .overlay(
                                                 Circle()
-                                                    .stroke(Color.blue.opacity(0.5), lineWidth: 20) // Adds fading edges
+                                                    .stroke(Color.pink.opacity(0.5), lineWidth: 20) // Adds fading edges
                                                     .blur(radius: 15)
                                             )
-                                            .shadow(color: Color.blue.opacity(0.3), radius: 20, x: 0, y: 0)
+                                            .shadow(color: Color.pink.opacity(0.3), radius: 20, x: 0, y: 0)
                                             .onAppear { // Trigger the animation when the view appears
                                                 withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: false)) {
                                                     self.animate.toggle()
@@ -75,7 +75,7 @@ struct SunnyDayView: View {
                                             }
 
                                         Circle() // Animate this circle
-                                            .stroke(Color.blue.opacity(0.9), lineWidth: 2)
+                            .stroke(Color.yellow.opacity(0.9), lineWidth: 2)
                                             .scaleEffect(animate ? 1.5 : 1)
                                             .opacity(animate ? 0 : 1)
                                             .animation(Animation.easeOut(duration: 1.5).repeatForever(autoreverses: false), value: animate)

@@ -14,7 +14,7 @@ struct SplashScreen: View {
     var body: some View {
         ZStack {
             // Dynamic gradient state change to simulate day to night
-            LinearGradient(gradient: Gradient(colors: animate ? [Color.black, Color.gray] : [Color.blue, Color.black]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: animate ? [Color.black, Color.blue] : [Color.blue, Color.yellow]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
                 .animation(.easeInOut(duration: 2), value: animate)  // Adjusted duration
 
@@ -35,7 +35,7 @@ struct SplashScreen: View {
                         .resizable()
                         .frame(width: 100, height: 100)
                         .foregroundColor(.white)
-                        .offset(y: animate ? -UIScreen.main.bounds.height / 5 : UIScreen.main.bounds.height / 2)
+                        .offset(y: animate ? -UIScreen.main.bounds.height / 6 : UIScreen.main.bounds.height / 2)
                         .opacity(animate ? 1 : 0)
                         .animation(Animation.easeInOut(duration: 2).delay(0.4), value: animate)  // Extended duration
                         .shadow(radius: 10)
@@ -57,10 +57,10 @@ struct SplashScreen: View {
                  */
                 
                 // Custom photo at the bottom
-                Image("AA68251F-AD28-4110-8C72-FC1C534D5EFA 2")
+                Image("E8997FAF-537B-4ED7-B7CA-74F9CDDB2F11 2 2")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 120, height: 120)
+                    .frame(width: 200, height: 200)
                     .clipShape(Circle())
                     .padding(20)
                     .overlay(

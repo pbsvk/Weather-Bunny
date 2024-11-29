@@ -15,23 +15,24 @@ struct WeatherRow: View {
     var body: some View {
         HStack(spacing: 20) {
             Image(systemName: logo)
-                .font(.title2)
                 .frame(width: 20, height: 20)
-                .foregroundColor(Color(hue: 0.656, saturation: 0.787, brightness: 0.245))
                 .padding()
                 .background(Color(hue: 1.0, saturation: 0.0, brightness: 0.888))
                 .cornerRadius(50)
 
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(name)
                     .font(.caption)
                 
                 Text(value)
                     .bold()
-                    .font(.title)
+                    .font(.title3)
             }
         }
+            
+            .fontWeight(.semibold)
+            .foregroundColor(.black)
 
     }
 }
