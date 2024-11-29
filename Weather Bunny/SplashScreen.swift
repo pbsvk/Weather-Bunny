@@ -14,7 +14,7 @@ struct SplashScreen: View {
     var body: some View {
         ZStack {
             // Dynamic gradient state change to simulate day to night
-            LinearGradient(gradient: Gradient(colors: animate ? [Color.black, Color.gray,Color.pink] : [Color.blue, Color.black]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: animate ? [Color.black, Color.gray] : [Color.blue, Color.black]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
                 .animation(.easeInOut(duration: 2), value: animate)  // Adjusted duration
 
