@@ -30,34 +30,18 @@ struct WeatherView: View {
                         // Display city name
                         HStack (spacing: 8){
                             Image(systemName: "paperplane.fill")
-                            
-                            if isDaytime == false {
-                                Text(weather.name)
+                            Text(weather.name)
                                     .font(.system(size: geometry.size.width * 0.07))
                                     .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                            }
-                            
-                            else {
-                                Text(weather.name)
-                                    .font(.system(size: geometry.size.width * 0.07))
-                                    .fontWeight(.bold)
-                            }
-                        }
+                                    
 
-                        // Use condition for icon
-                        if isDaytime == true {
+                        }.foregroundColor(.white)
+
                             Image(systemName: WeatherIcons.fromWeatherResponse(weather: weather.weather).iconName())
                                 .resizable()
                                 .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.15)
-                                
-                        }
-                        else {
-                            Image(systemName: WeatherIcons.fromWeatherResponse(weather: weather.weather).iconName())
-                                .resizable()
-                                .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.15)
-                                .foregroundStyle(.black)
-                        }
+                                .foregroundStyle(.white)
+                        
                        
                         Text(weather.weather.first?.main ?? "N/A")
                             .font(.system(size: geometry.size.width * 0.05))
