@@ -11,7 +11,8 @@ struct SunnyDayView: View {
         @State private var animate = false // Add this state variable
         @State private var scale: CGFloat = 1.0 // State variable for scaling
         @State private var rotation: Angle = .zero // State variable for rotation
-        
+        @State var activeView: currentView
+
         var body: some View {
             ZStack {
                 // Background
@@ -19,7 +20,6 @@ struct SunnyDayView: View {
                     .ignoresSafeArea()
 
                 VStack(spacing: 20) {
-                    Spacer()
                     // City name
                     Text("New York City")
                         .font(.system(size: 30))
@@ -55,35 +55,6 @@ struct SunnyDayView: View {
                         .font(.system(size: 40))
                         .fontWeight(.medium)
                         .foregroundColor(.white)
-                    
-                    ZStack {
-                                        Image("CE657A9A-DBF3-44DD-B785-61BD3CA342C4 2")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 300, height: 400)
-                                            .clipShape(Circle()) // Optional: Make it a circle
-                                            .overlay(
-                                                Circle()
-                                                    .stroke(Color.pink.opacity(0.5), lineWidth: 20) // Adds fading edges
-                                                    .blur(radius: 15)
-                                            )
-                                            .shadow(color: Color.pink.opacity(0.3), radius: 20, x: 0, y: 0)
-                                            .onAppear { // Trigger the animation when the view appears
-                                                withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: false)) {
-                                                    self.animate.toggle()
-                                                }
-                                            }
-
-                                        Circle() // Animate this circle
-                            .stroke(Color.yellow.opacity(0.9), lineWidth: 2)
-                                            .scaleEffect(animate ? 1.5 : 1)
-                                            .opacity(animate ? 0 : 1)
-                                            .animation(Animation.easeOut(duration: 1.5).repeatForever(autoreverses: false), value: animate)
-                  
-                                    }
-
-                    Spacer()
-
 
                     // Weekly forecast
                     HStack(spacing: 20) {
@@ -101,9 +72,14 @@ struct SunnyDayView: View {
                     .padding(.bottom, 50)
                 }
             }
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+
         }
     }
 
-#Preview {
-    SunnyDayView()
+struct SunnyDayView_Previews: PreviewProvider {
+    static var previews: some View {
+        SunnyDayView(activeView: currentView.center)
+    }
 }
+

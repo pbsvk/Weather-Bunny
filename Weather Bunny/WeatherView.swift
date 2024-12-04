@@ -11,6 +11,7 @@ import SwiftUI
 
 struct WeatherView: View {
     @State private var animate = false
+    @State var activeView: currentView
     var weather: ResponseBody
     
     var body: some View {
@@ -26,6 +27,9 @@ struct WeatherView: View {
 
                 ScrollView { // ScrollView remains the same
                     VStack(spacing: 10) {
+                        Spacer()
+                        Spacer()
+                        Spacer()
 
                         // Display city name
                         HStack (spacing: 8){
@@ -37,7 +41,7 @@ struct WeatherView: View {
 
                         }.foregroundColor(.white)
 
-                            Image(systemName: WeatherIcons.fromWeatherResponse(weather: weather.weather).iconName())
+                        Image(systemName: WeatherIcons.fromWeatherResponse(weather: weather.weather).iconName())
                                 .resizable()
                                 .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.15)
                                 .foregroundStyle(.white)
@@ -206,7 +210,8 @@ struct WeatherView: View {
                     }
                 }.scrollIndicators(.hidden)
             }
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
     }
 
     // Helper function to determine daytime
@@ -223,5 +228,5 @@ struct WeatherView: View {
     }
 }
 #Preview {
-    WeatherView(weather: previewWeather)
+    WeatherView(activeView: currentView.center, weather: previewWeather)
 }

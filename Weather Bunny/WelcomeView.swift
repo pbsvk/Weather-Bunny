@@ -17,7 +17,7 @@ struct WelcomeView: View {
 
     // Use @AppStorage to track welcome screen dismissal
     @AppStorage("welcomeShown") private var welcomeShown: Bool = false
-
+    
     var body: some View {
         ZStack {
             Color.pink.opacity(0.6) // Light pink background
@@ -58,7 +58,8 @@ struct WelcomeView: View {
             }
             .multilineTextAlignment(.center)
             .padding()
-        }
+        }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+
 
     }
 }
@@ -68,4 +69,3 @@ struct WelcomeView: View {
 }
 // End of file. No additional code.
 
-// End of file. No additional code.

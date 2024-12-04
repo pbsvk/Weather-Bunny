@@ -1,20 +1,11 @@
-//
-//  ContentView.swift
-//  Weather Bunny
-//
-//  Created by Bhaskara Padala on 11/23/24.
-//
-
 import SwiftUI
-
-// Your imports remain the same
 
 struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     var weatherManager = WeatherManager()
     @State var weather: ResponseBody?
-    @AppStorage("welcomeShown") private var welcomeShown: Bool = false  // Use AppStorage to persist state
-    @State private var showSplash = true // Add splash state
+    @AppStorage("welcomeShown") private var welcomeShown: Bool = false // Persist welcome state
+    @State private var showSplash = true // Control splash visibility
 
     var body: some View {
         ZStack {
@@ -23,37 +14,40 @@ struct ContentView: View {
             } else {
                 VStack {
                     if !welcomeShown {
-                        // Display WelcomeView only if it hasn't been dismissed
-                        WelcomeView()
+                        WelcomeView() // Ensure `currentView.center` is valid
                             .environmentObject(locationManager)
                             .onAppear {
                                 if locationManager.location != nil {
-                                    welcomeShown = true  // Set the flag when location is fetched
+                                    welcomeShown = true
                                 }
                             }
                     } else if let location = locationManager.location {
-                        if let weather = weather {
-                            WeatherView(weather: weather)
+                        if let weatherData = weather { // Safe unwrapping of `weather`
+                            SwiftNavigationView(activeView: currentView.center, weather: weatherData)
                         } else {
-                            // Load and fetch weather data
                             LoadingView()
                                 .task {
                                     do {
-                                        weather = try await weatherManager.getCurrentWeather(latitude: location.latitude, longitude: location.longitude)
+                                        weather = try await weatherManager.getCurrentWeather(
+                                            latitude: location.latitude,
+                                            longitude: location.longitude
+                                        )
                                     } catch {
-                                        print("Error getting weather: \(error)")
+                                        print("Error fetching weather: \(error)")
                                     }
                                 }
                         }
                     } else {
-                        // Fallback to WelcomeView in case location is not found again
+                        // Handle fallback in case location is unavailable
                         WelcomeView()
                             .environmentObject(locationManager)
                     }
-                }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .onAppear {
+            // Splash screen transition
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation(.easeInOut) {
                     showSplash = false
@@ -66,5 +60,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
-// End of file. No additional code.
