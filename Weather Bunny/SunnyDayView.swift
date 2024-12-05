@@ -20,12 +20,6 @@ struct SunnyDayView: View {
                     .ignoresSafeArea()
 
                 VStack(spacing: 20) {
-                    // City name
-                    Text("New York City")
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-
                     // Weather icon
                     Image(systemName: "sun.max.fill")
                         .foregroundStyle(.yellow)
@@ -49,27 +43,6 @@ struct SunnyDayView: View {
                             }
                         }
                         
-
-                    // Temperature
-                    Text("26°C")
-                        .font(.system(size: 40))
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-
-                    // Weekly forecast
-                    HStack(spacing: 20) {
-                        ForEach(0..<5) { _ in
-                            VStack {
-                                Text("Mon")
-                                    .foregroundColor(.white)
-                                Image(systemName: "sun.max.fill")
-                                    .foregroundColor(.yellow)
-                                Text("26°C")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }
-                    .padding(.bottom, 50)
                 }
             }
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)

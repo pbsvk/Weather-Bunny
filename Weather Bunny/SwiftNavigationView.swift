@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 enum currentView {
     case center
     case left
