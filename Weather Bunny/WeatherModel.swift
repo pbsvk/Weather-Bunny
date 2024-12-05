@@ -17,7 +17,7 @@ enum WeatherCondition {
              case (..<0, true):
                  self = .freezingDay
              case (..<0, false):
-                 self = .freezingNight
+                 self = .freezingNight 
              case (0..<5, true):
                  self = .veryColdDay
              case (0..<5, false):
