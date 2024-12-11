@@ -45,11 +45,8 @@ open Weather\ Bunny.xcodeproj
 4. Build and run the application
 
 ## Screenshots
-<img width="377"  src= ![IMG_7993](https://github.com/user-attachments/assets/b32200e3-8694-48e4-8350-718ed02f5b49) />
-<img width="377" alt="image" src= ![IMG_7992](https://github.com/user-attachments/assets/13c6a75e-de24-4899-8089-d0cf233aa727) />
-<img width="377" alt="image" src= ![IMG_7991](https://github.com/user-attachments/assets/a1f51ef0-aed7-4184-8042-9c1a80e820a8) />
-<img width="377" alt="image" src= ![IMG_7990](https://github.com/user-attachments/assets/be13ef0f-a7de-438a-a57e-c2a68f997050) />
-<img width="377" alt="image" src= ![IMG_7989](https://github.com/user-attachments/assets/79b8ced2-06dc-4b71-939e-757ed21d2c95) />
+![IMG_7989](https://github.com/user-attachments/assets/a0dd6ed8-9cb5-4869-be56-02ab530512b6)
+
 
 
 <img width="377" alt="image" src="https://github.com/user-attachments/assets/46629857-f48d-417f-a72b-393343131d27" />
