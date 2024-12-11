@@ -46,7 +46,7 @@ open Weather\ Bunny.xcodeproj
 
 ## Screenshots
 
-<img width="377" alt="image" src="https://github.com/user-attachments/assets/a0dd6ed8-9cb5-4869-be56-02ab530512b6" />
+<img width="360" alt="image" src="https://github.com/user-attachments/assets/a0dd6ed8-9cb5-4869-be56-02ab530512b6" />
 
 
 <img width="377" alt="image" src="https://github.com/user-attachments/assets/46629857-f48d-417f-a72b-393343131d27" />
