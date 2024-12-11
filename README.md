@@ -45,13 +45,12 @@ open Weather\ Bunny.xcodeproj
 4. Build and run the application
 
 ## Screenshots
-
+<img width="360" alt="image" src="https://github.com/user-attachments/assets/f904f67b-cc3b-4caa-807c-3241dd1b23cb" />
 <img width="360" alt="image" src="https://github.com/user-attachments/assets/a0dd6ed8-9cb5-4869-be56-02ab530512b6" />
-
-
+<img width="360" alt="image" src="https://github.com/user-attachments/assets/b80b1653-ff1d-4ce6-9676-911dd06d4548" />
+<img width="360" alt="image" src="https://github.com/user-attachments/assets/cdc7f144-4fb2-4991-aadc-7b3af74e3e4e" />
+<img width="360" alt="image" src="https://github.com/user-attachments/assets/a8a42593-78a9-4386-bc0e-57246adc5423" />
 <img width="377" alt="image" src="https://github.com/user-attachments/assets/46629857-f48d-417f-a72b-393343131d27" />
-
-
 
 ## Contributing
 
@@ -62,5 +61,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - Weather data provided by [OpenWeather API](https://openweathermap.org/api)
 - Icons from SF Symbols
-- Special thanks to all contributors
+
 
