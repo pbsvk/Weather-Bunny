@@ -45,13 +45,14 @@ open Weather\ Bunny.xcodeproj
 4. Build and run the application
 
 ## Screenshots
+![IMG_7993](https://github.com/user-attachments/assets/b32200e3-8694-48e4-8350-718ed02f5b49)
+![IMG_7992](https://github.com/user-attachments/assets/13c6a75e-de24-4899-8089-d0cf233aa727)
+![IMG_7991](https://github.com/user-attachments/assets/a1f51ef0-aed7-4184-8042-9c1a80e820a8)
+![IMG_7990](https://github.com/user-attachments/assets/be13ef0f-a7de-438a-a57e-c2a68f997050)
+![IMG_7989](https://github.com/user-attachments/assets/79b8ced2-06dc-4b71-939e-757ed21d2c95)
+
 
 <img width="377" alt="image" src="https://github.com/user-attachments/assets/46629857-f48d-417f-a72b-393343131d27" />
-![IMG_7993](https://github.com/user-attachments/assets/ea2d1734-dae7-4c71-a249-24ae95ba62d8)
-![IMG_7992](https://github.com/user-attachments/assets/baa94895-dfaf-4a72-b0b7-f17a3b961121)
-![IMG_7991](https://github.com/user-attachments/assets/6d07ae8b-0ef6-4330-a83e-821d63933975)
-![IMG_7990](https://github.com/user-attachments/assets/474cb425-9ad7-40f3-8019-8d04f06b11f8)
-![IMG_7989](https://github.com/user-attachments/assets/083d6377-ebe4-49fc-9191-7e2fe29d44aa)
 
 
 
